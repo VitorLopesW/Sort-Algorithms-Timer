@@ -6,6 +6,7 @@
 std::vector<int> createAndRandomize(int size);
 
 std::vector<int> insertionSort(std::vector<int>& array);
+std::vector<int> bubbleSort(std::vector<int>& nonSortedArray);
 
 void printArray(const std::vector<int>& array) {
     for (std::size_t i = 0; i < array.size(); ++i) {
@@ -19,12 +20,11 @@ double calculateTime(std::string algorithim, std::vector<int> array){
     auto start = std::chrono::steady_clock::now();
 
     if (algorithim == "insertionSort") insertionSort(array);
-
+    else if (algorithim == "bubbleSort") insertionSort(array);
 
     auto end = std::chrono::steady_clock::now();
-    auto duration = std::chrono::duration_cast<std::chrono::microseconds>(end - start).count();
-    auto durationSeconds = duration / 1000000.0;
-    std::cout << "inside: " << durationSeconds << "\n";
+    auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
+    auto durationSeconds = duration / 1000.0;
     return durationSeconds;
 }
 
@@ -32,13 +32,15 @@ double calculateTime(std::string algorithim, std::vector<int> array){
 int main() {
 
     std::vector<int> array = createAndRandomize(5000);
-    
-    double time = calculateTime("insertionSort", array);
-    
-    std::cout << "outside> " << time << "\n";
+
+    std::cout << "Insertion Sort: " << calculateTime("insertionSort", array) << " seconds" << "\n";
+    std::cout << "Bubble Sort: " << calculateTime("bubbleSort", array) << " seconds" << "\n";;
 
 
+
+
+    
+    
     return 0;
 }
 
-//std::cout << "Duration: " << std::fixed << std::setprecision(3) << durationSeconds << " seconds" << std::endl;
