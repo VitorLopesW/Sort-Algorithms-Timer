@@ -1,2 +1,0 @@
-    insertionSort(array);
-    printArray(array);

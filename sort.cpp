@@ -30,3 +30,17 @@ std::vector<int> bubbleSort(std::vector<int>& nonSortedArray) {
     }
     return array;
 }
+
+std::vector<int> selectionSort(std::vector<int>& nonSortedArray) {
+    std::vector<int> array = nonSortedArray;
+    for(int index = 0 ; index < array.size() - 1; index++){
+        int smallest_index = index;
+        for(int indexJ = index + 1; indexJ < array.size(); indexJ++){
+            if(array[indexJ] < array[smallest_index]) smallest_index = indexJ;
+        }
+        int temp = array[index];
+        array[index] = array[smallest_index];
+        array[smallest_index] = temp;
+    }
+    return array;
+}
